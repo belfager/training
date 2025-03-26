@@ -27,12 +27,12 @@ def main(stdscr):
 
         # exercise bar
         for j in range(0,14):
-            stdscr.addstr(2+(i*2),20+j,'=',curses.color_pair(2))
+            stdscr.addstr(2+(i*2),20+j,'=',curses.color_pair(2))    # blue
         stdscr.addstr(2+(i*2),34,'O')
 
         # rest bar
         for j in range(0,29):
-            stdscr.addstr(2+(i*2),38+j,'=',curses.color_pair(1))
+            stdscr.addstr(2+(i*2),38+j,'=',curses.color_pair(1))    # green
 
         stdscr.addstr(2+(i*2),67,'O')
 
@@ -45,8 +45,15 @@ def main(stdscr):
         # highlight current exercise
         stdscr.addstr(2+(i*2),2,exercises[i],curses.color_pair(3))
         if i>0:
-            stdscr.addstr(2+((i-1)*2),2,exercises[(i-1)],curses.color_pair(4))
+            stdscr.addstr(2+((i-1)*2),2,exercises[(i-1)],curses.color_pair(4))  # white
         stdscr.refresh()
+
+        # countdown exercise
+        for j in range(29,-1,-1):
+            stdscr.addstr(2+(i*2),38+j,'O',curses.color_pair(4))    # white
+            stdscr.addstr(2+(i*2),39+j,' ',curses.color_pair(2))    # blue
+            stdscr.refresh()
+            time.sleep(1)
 
         time.sleep(2)
 
