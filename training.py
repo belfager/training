@@ -5,6 +5,8 @@ import random
 
 import time
 
+bel_char = '\x07'
+
 def main(stdscr):
     
     with open('exercises.txt','r') as file:
@@ -25,16 +27,16 @@ def main(stdscr):
         # list exercises
         stdscr.addstr(2+(i*2),2,exercises[i])
 
-        # exercise bar
-        for j in range(0,14):
-            stdscr.addstr(2+(i*2),20+j,'=',curses.color_pair(2))    # blue
-        stdscr.addstr(2+(i*2),34,'O')
-
         # rest bar
-        for j in range(0,29):
-            stdscr.addstr(2+(i*2),38+j,'=',curses.color_pair(1))    # green
+        for j in range(0,14):
+            stdscr.addstr(2+(i*2),20+j,'—',curses.color_pair(2))    # blue
+        stdscr.addstr(2+(i*2),34,'•')
 
-        stdscr.addstr(2+(i*2),67,'O')
+        # exercise bar
+        for j in range(0,29):
+            stdscr.addstr(2+(i*2),38+j,'—',curses.color_pair(1))    # green
+
+        stdscr.addstr(2+(i*2),67,'•')
 
     stdscr.refresh()
     stdscr.getch()
@@ -50,10 +52,22 @@ def main(stdscr):
 
         # countdown exercise
         for j in range(29,-1,-1):
-            stdscr.addstr(2+(i*2),38+j,'O',curses.color_pair(4))    # white
+            stdscr.addstr(2+(i*2),38+j,'•',curses.color_pair(4))    # white
             stdscr.addstr(2+(i*2),39+j,' ',curses.color_pair(2))    # blue
             stdscr.refresh()
-            time.sleep(1)
+
+            # play sound on last three pips
+            # if j<2:
+                # print(f"{bel_char}")
+
+            time.sleep(2)
+
+        # countdown rest
+        for j in range(14,-1,-1):
+            stdscr.addstr(2+(i*2),20+j,'•',curses.color_pair(4))    # white
+            stdscr.addstr(2+(i*2),21+j,' ',curses.color_pair(1))    # green
+            stdscr.refresh()
+            time.sleep(2)
 
         time.sleep(2)
 
