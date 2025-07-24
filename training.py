@@ -5,7 +5,7 @@ import random
 
 import time
 
-bel_char = '\x07'
+from playsound import playsound
 
 def main(stdscr):
     
@@ -57,16 +57,33 @@ def main(stdscr):
             stdscr.refresh()
 
             # play sound on last three pips
-            # if j<2:
-                # print(f"{bel_char}")
+            if (j<3) and (j>0):
+                playsound("beep1.mp3")
+            else:
+                time.sleep(2)
 
-            time.sleep(2)
+            if j==0:
+                playsound("beep2.mp3")
+            else:
+                time.sleep(2)
 
         # countdown rest
         for j in range(14,-1,-1):
             stdscr.addstr(2+(i*2),20+j,'•',curses.color_pair(4))    # white
             stdscr.addstr(2+(i*2),21+j,' ',curses.color_pair(1))    # green
             stdscr.refresh()
+
+            # play sound on last three pips
+            if (j<3) and (j>0):
+                playsound("beep1.mp3")
+            else:
+                time.sleep(2)
+
+            if j==0:
+                playsound("beep2.mp3")
+            else:
+                time.sleep(2)
+
             time.sleep(2)
 
         time.sleep(2)
