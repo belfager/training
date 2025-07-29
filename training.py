@@ -60,12 +60,12 @@ def main(stdscr):
             if (j<3) and (j>0):
                 playsound("beep1.mp3")
             else:
-                time.sleep(2)
+                time.sleep(1)
 
             if j==0:
                 playsound("beep2.mp3")
             else:
-                time.sleep(2)
+                time.sleep(1)
 
         # countdown rest
         for j in range(14,-1,-1):
@@ -77,12 +77,12 @@ def main(stdscr):
             if (j<3) and (j>0):
                 playsound("beep1.mp3")
             else:
-                time.sleep(2)
+                time.sleep(1)
 
             if j==0:
                 playsound("beep2.mp3")
             else:
-                time.sleep(2)
+                time.sleep(1)
 
             time.sleep(2)
 
