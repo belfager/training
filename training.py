@@ -7,10 +7,29 @@ import time
 
 from playsound import playsound
 
+def count_lines_in_file(filename):
+
+    try:
+        # Open the file in read mode ('r')
+        with open(filename, 'r', encoding='utf-8') as file:
+            line_count = 0
+            # Iterate through each line of the file and increment the counter
+            for line in file:
+                line_count += 1
+            return line_count
+    except FileNotFoundError:
+        print(f"Error: The file '{filename}' was not found.")
+        return None
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+        return None
+
 def main(stdscr):
+
+    l = count_lines_in_file('exercises.txt')
     
     with open('exercises.txt','r') as file:
-        exercises = [file.readline().strip() for _ in range(10)]
+        exercises = [file.readline().strip() for _ in range(l)]
 
     random.shuffle(exercises)
 
